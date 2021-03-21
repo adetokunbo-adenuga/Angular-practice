@@ -1,0 +1,12 @@
+<div class="mb-3">
+  <label>Name: </label>
+  <input type="text" [formControl]="name">
+</div>
+<br>
+<p>
+  Value: {{ name.value }}
+</p>
+<br>
+<p>
+  <button (click)="updateName()" type="button" class="btn rounded-pill btn-primary">Update Name</button>
+</p>

@@ -1,0 +1,64 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+  <label>
+    First Name:<br>
+    <input type="text" formControlName="firstName" required>
+  </label>
+  <br>
+  <label>
+    Last Name:<br>
+    <input type="text" formControlName="lastName">
+  </label>
+  <br>
+  <br>
+  <div formGroupName="address">
+    <h3>Address</h3>
+
+    <label>
+      Street:
+      <br>
+      <input type="text" formControlName="street">
+    </label>
+    <br>
+    <label>
+      City:
+      <br>
+      <input type="text" formControlName="city">
+    </label>
+    <br>
+    <label>
+      State:<br>
+      <input type="text" formControlName="state">
+    </label>
+    <br>
+    <label>
+      Zip Code:<br>
+      <input type="text" formControlName="zip">
+    </label>
+    <br>
+
+  </div>
+  <br>
+  <br>
+  <div formArrayName="aliases">
+    <h3>Aliases</h3> <button (click)="addAlias()" class="btn rounded-pill btn-primary">Add Alias</button>
+
+    <div *ngFor="let alias of aliases.controls; let i=index">
+      <!-- The repeated alias template -->
+      <label>
+        Alias: <br>
+        <input type="text" [formControlName]="i">
+      </label>
+    </div>
+  </div>
+  <button type="submit" [disabled]="!profileForm.valid" class="btn rounded-pill btn-primary">Submit</button>
+  <br>
+  <br>
+  <p>
+    Form Status: {{ profileForm.status }}
+  </p>
+  <p>
+    <button (click)="updateProfile()" class="btn rounded-pill btn-primary">Update Profile</button>
+  </p>
+
+</form>
